@@ -38,7 +38,7 @@ defmodule Widetranslator.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:pronouncingex, "~> 0.1.4"},
-      {:deeplixir, "~> 0.1.4"},
+      {:deeplixir, "~> 0.1.6"},
       {:cors_plug, "~> 1.3"},
       {:distillery, "~> 1.5", runtime: false},
       {:cowboy, "~> 1.0"}
