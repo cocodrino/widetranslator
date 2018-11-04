@@ -40,13 +40,15 @@ defmodule WidetranslatorWeb.TranslateChannel do
         _         -> {"",""}
       end
 
-      translation = %{"translation" => translation, "IPA" => ipa, "simple" => simple}
+      Logger.info("translation:========\n #{translation}")
+
+      response = %{"translation" => translation, "IPA" => ipa, "simple" => simple}
       Logger.info("voy a retornar traduccion")
-      Logger.info(translation)
-      broadcast!(socket, "translate", translation)
+      #IEx.pry
+      broadcast!(socket, "translate", response)
     else
       {:error,value} ->
-      IO.puts("ERROR INTENTANTO TRADUCIR #{value}")
+        Logger.error("ERROR INTENTANTO TRADUCIR #{value}")
       broadcast!(socket, "error", %{"error" => value})
     end
 
