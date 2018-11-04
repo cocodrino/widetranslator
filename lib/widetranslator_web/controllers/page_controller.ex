@@ -6,6 +6,6 @@ defmodule WidetranslatorWeb.PageController do
     #html(conn, File.read!("priv/static/index.html"))
     #revisando ruta
     #html(conn, File.read!(Application.app_dir(:widetranslator,"priv/static/index.html")))
-    File.stream!(Path.join(:code.priv_dir(:widetranslator), "index.html"))
+    html(conn,Path.join(:code.priv_dir(:widetranslator), "index.html"))
   end
 end
