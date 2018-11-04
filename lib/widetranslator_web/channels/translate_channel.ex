@@ -28,6 +28,8 @@ defmodule WidetranslatorWeb.TranslateChannel do
 
   def handle_in("translate", %{"from-lang" => from,"to-lang"=>to,"from-content" => from_content}, socket) do
 
+
+    IO.write("recibido mensaje")
     #translation = (String.length(from_content) > 2) && Deeplixir.translate(from_content, String.to_atom(to), String.to_atom(from))  || ""
     with {:ok,translation} <-  Deeplixir.translate(from_content, String.to_atom(to), String.to_atom(from))
     do
@@ -38,8 +40,10 @@ defmodule WidetranslatorWeb.TranslateChannel do
         _         -> {"",""}
       end
 
-
-      broadcast!(socket, "translate", %{"translation" => translation, "IPA" => ipa, "simple" => simple})
+      translation = %{"translation" => translation, "IPA" => ipa, "simple" => simple}
+      IO.write("voy a retornar la traduccion")
+      IO.write(translation)
+      broadcast!(socket, "translate", translation)
     else
       {:error,value} ->
       IO.puts("ERROR INTENTANTO TRADUCIR #{value}")
