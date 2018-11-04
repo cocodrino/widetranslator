@@ -67,4 +67,4 @@ config :logger, level: :info
 #import_config "prod.secret.exs"
 
 
-config :logger, level: :info
+#config :logger, level: :info
